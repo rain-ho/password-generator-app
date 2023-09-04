@@ -15,11 +15,15 @@ class PasswordGeneratorApp:
 
         self.password = ""
         self.password_size = 4
+        self.darkMode = "dark"
+        self.colorMode = "dark-blue"
         self.create_gui()
 
     def create_gui(self):
-        customtkinter.set_appearance_mode("dark")
-        customtkinter.set_default_color_theme("dark-blue")
+
+        self.lightMode(self.darkMode, self.colorMode)
+        # customtkinter.set_appearance_mode("dark")
+        # customtkinter.set_default_color_theme("dark-blue")
 
         label = customtkinter.CTkLabel(master=self.frame, text="PASSWORD GENERATOR", font=("Roboto", 20))
         label.pack(pady=12, padx=10)
@@ -52,9 +56,26 @@ class PasswordGeneratorApp:
         self.copy_button = customtkinter.CTkButton(master=self.frame, text="Copy Password", command=self.copy_password)
         self.copy_button.pack(pady=15, padx=50)
 
+        self.lightModeButton = customtkinter.CTkButton(master=self.frame, text="Light Mode", command=self.toggleMode)
+        self.lightModeButton.pack(pady=15, padx=50)
+
         developed_by_label = customtkinter.CTkLabel(master=self.frame, text="Developed by Rainho\ngithub.com/rain-ho", font=("Roboto", 12), cursor="hand2")
         developed_by_label.pack(side="bottom", pady=20)
         developed_by_label.bind("<Button-1>", self.open_github)
+    
+    def toggleMode(self):
+        if self.darkMode == "dark":
+            self.darkMode = "light"
+            self.colorMode = "green"
+            
+        else:
+            self.darkMode = "dark"
+            self.colorMode = "dark-blue"
+        self.lightMode(self.darkMode, self.colorMode)
+
+    def lightMode(self, mode, color):
+        customtkinter.set_appearance_mode(mode)
+        customtkinter.set_default_color_theme(color)
 
     def getValues(self):
         uppercase = int(self.upperCase.get())
