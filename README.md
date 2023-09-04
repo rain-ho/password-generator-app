@@ -53,7 +53,7 @@ To use this chat program, follow the instructions below:
 
 ### Prerequisites
 
-You need to have IDE capable of running arduino installed on your computer.
+You do not need to have anything previously installed.
 
 ### Installation 
 
